@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.forms import UserCreationForm
-
+from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # import Post
 from .models import Post
@@ -57,6 +57,7 @@ class PostDeleteView(DeleteView):
 class SignupView(CreateView):
     # can have prevknown fields
     # predefined form class
-    form_class = UserCreationForm
+    # form_class = UserCreationForm # default built-in user creation form
+    form_class = CustomUserCreationForm
     template_name = 'signup.html'
     success_url = reverse_lazy('login')

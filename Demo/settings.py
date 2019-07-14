@@ -132,3 +132,8 @@ STATICFILES_DIRS = [
 
 # redict to a page when log in successfully
 LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'login'
+
+# customized user model: appname + modelname
+AUTH_USER_MODEL = 'FunApp.FunAppUser'
