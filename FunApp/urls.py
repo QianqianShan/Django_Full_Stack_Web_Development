@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 # from . import views
 
-from FunApp.views import PostView, PostDetailView
+from FunApp.views import PostView, PostDetailView, PostCreateView
 
 urlpatterns = [
     # path('', views.HelloDjango.as_view()),
@@ -25,4 +25,5 @@ urlpatterns = [
     # <int:pk> pattern match
     # set name as 'post_detail'
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post_detail'),
+    path('add_post/', PostCreateView.as_view(), name = 'make_post'),
 ]

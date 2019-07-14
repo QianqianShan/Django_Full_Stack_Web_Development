@@ -1,3 +1,8 @@
+<div>
+  <!-- add a hyperlink to redirect to make_post url -->
+  <a href="{% url 'make_post' %}">Add Post</a>
+</div>
+
 {% load static %}
 <!-- Rendered by PostView in views.py -->
 <div>
@@ -11,9 +16,10 @@ https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-display/
 <!-- post object has two attributes: title and image (models.py) -->
 <p>{{ post.title }}</p>
 <!-- here post_detail is the name defined in urlpatterns in urls.py
-     reverse url defined in urlpatterns -->
+     reverse url defined in urlpatterns
+     post.pk: primary key of post 1, 2, 3, ... -->
 <a href="{% url 'post_detail' post.pk %}">
-<img src="{{ post.image.url }}" alt="images">
+<img src="{{ post.image.url }}" alt="images" width="900" height="500">
 </a>
 {% endfor %}
 </div>

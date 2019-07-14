@@ -1,0 +1,10 @@
+<h1>Add Post</h1>
+<form class="" action="" method="post" enctype="multipart/form-data">
+  <!-- security check with Django -->
+  {% csrf_token %}
+  <!-- as_paragraph, form is an attribute from CreateView  -->
+  {{ form.as_p }}
+  <!-- add a button  -->
+  <button type="submit" name="Submit">Save</button>
+
+</form>
