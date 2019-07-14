@@ -1,37 +1,54 @@
-<!-- put navigation.html code block here -->
-<!-- render login logout ... via navigation -->
-{% extends 'base.html' %}
-<!-- content block  -->
+{% extends "base.html" %}
+
 {% block content %}
 
+<div class="cards-listing">
+    {% for post in object_list %}
+        <div class="row">
+            <div class="card view-update {{ post.pk }}">
+                <div class="card__panel-head">
+                  <!-- poster name  -->
+                    <div class="poster__info">
+                        <a href="{% url 'home' %}" class="poster__name">
+                            {% if post.author.profile_pic %}
+                                <img class="poster__profilepic" src="{{ post.author.profile_pic.url }}">
+                            {% endif %}
+                            {{ post.author.username }}
+                        </a>
+                        <!-- <span class="poster__timestamp">
+                            {{ post.posted_on|timesince }}
+                        </span> -->
+                    </div>
+                </div>
+                <!-- posted image -->
+                <a href="{% url 'post_detail' post.pk %}">
+                    <img class="card__main-image" src="{{ post.image.url }}">
+                </a>
+                <!-- add how many likes of the post  -->
+                <div class="card__panel-body">
+                    <div class="likes">
+                        {% if post.get_like_count %}
+                            {{ post.get_like_count }} like{% if post.get_like_count > 1 %}s{% endif %}
+                        {% endif %}
+                    </div>
 
+                    <ul class="comment-list">
+                        <a class="view-more"></a>
+                        <!-- add each comment as a list item with username + comment  -->
+                        {% for comment in post.comments.all %}
+                        <li class="comment-list__comment">
+                            <a href="{% url 'home' %}" class="user">
+                                {{ comment.user.username }}
+                            </a>
+                            <span class="comment">{{ comment.comment }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
 
-
-<div>
-  <!-- add a hyperlink to redirect to make_post url -->
-  <a href="{% url 'make_post' %}">Add Post</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
-
-{% load static %}
-<!-- Rendered by PostView in views.py -->
-<div>
-<!-- traverse all Post objects for loop of object_list
-https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-display/
--->
-
-<!-- \{%%\} allows for Django grammer -->
-{% for post in object_list %}
-<!-- two curly brackets allows python grammer in html -->
-<!-- post object has two attributes: title and image (models.py) -->
-<p>{{ post.title }}</p>
-<!-- here post_detail is the name defined in urlpatterns in urls.py
-     reverse url defined in urlpatterns
-     post.pk: primary key of post 1, 2, 3, ... -->
-<a href="{% url 'post_detail' post.pk %}">
-<img src="{{ post.image.url }}" alt="images" width="900" height="500">
-</a>
-{% endfor %}
-</div>
-
-{% endblock %}
+{% endblock content %}

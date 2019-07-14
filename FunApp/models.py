@@ -44,6 +44,12 @@ class Post(models.Model):
         # self.id: primary key of the currently created model
         # reverse url from its name
         return reverse('post_detail', args = [str(self.id)])
+    # count how many likes
+    def get_like_count(self):
+        return self.likes.count()
+    # count how many comments
+    def get_comment_count(self):
+        return self.comments.count()
 
 
 
