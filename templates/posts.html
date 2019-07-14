@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/2.2/ref/class-based-views/generic-display/
 <!-- two curly brackets allows python grammer in html -->
 <!-- post object has two attributes: title and image (models.py) -->
 <p>{{ post.title }}</p>
-<a href="{% url 'post' post.pk %}">
+<!-- here post_detail is the name defined in urlpatterns in urls.py
+     reverse url defined in urlpatterns -->
+<a href="{% url 'post_detail' post.pk %}">
 <img src="{{ post.image.url }}" alt="images">
 </a>
 {% endfor %}

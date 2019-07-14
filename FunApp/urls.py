@@ -21,7 +21,8 @@ from FunApp.views import PostView, PostDetailView
 
 urlpatterns = [
     # path('', views.HelloDjango.as_view()),
-    path('', PostView.as_view()),
+    path('', PostView.as_view(), name = 'home'),
     # <int:pk> pattern match
-    path('post/<int:pk>/', PostDetailView.as_view(), name = 'post'),
+    # set name as 'post_detail'
+    path('post/<int:pk>/', PostDetailView.as_view(), name = 'post_detail'),
 ]
