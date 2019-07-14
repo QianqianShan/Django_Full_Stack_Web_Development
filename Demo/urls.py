@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # include another urlconf
     path('', include('FunApp.urls')),
+    # if .../auth/, use auth app urls login.html in templates/registration
+    path('auth/', include('django.contrib.auth.urls')),
 ]

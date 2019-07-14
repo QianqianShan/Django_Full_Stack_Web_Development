@@ -18,6 +18,7 @@ class Post(models.Model):
     )
 
     def __str__(self):
+        # when str() is called for Post object, return its title
         return self.title
 
     def get_absolute_url(self):

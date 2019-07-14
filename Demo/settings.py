@@ -129,3 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# redict to a page when log in successfully
+LOGIN_REDIRECT_URL = 'home'
