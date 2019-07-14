@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+# from . import views
+
+from FunApp.views import PostView, PostDetailView
 
 urlpatterns = [
-    path('', views.HelloDjango.as_view()),
+    # path('', views.HelloDjango.as_view()),
+    path('', PostView.as_view()),
+    # <int:pk> pattern match
+    path('post/<int:pk>/', PostDetailView.as_view(), name = 'post'),
 ]

@@ -6,7 +6,7 @@ from imagekit.models import ProcessedImageField
 # Post includes two fields: title and image
 class Post(models.Model):
     # https://docs.djangoproject.com/en/2.2/ref/models/fields/
-    # can be blank / null
+    # title and image can be blank / null
     title = models.TextField(blank = True, null = True)
     image = ProcessedImageField(
     upload_to = 'static/images/posts',
