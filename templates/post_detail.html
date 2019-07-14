@@ -1,3 +1,6 @@
+{% extends 'navigation.html' %}
+{% block content %}
+
 <p>{{ object.title }}</p>
 <!-- direct to the correct image path -->
 <img src="http://{{ request.META.HTTP_HOST }}/{{post.image.url}}" alt="">
@@ -11,3 +14,5 @@
   <a href="{% url 'delete_post' object.id %}">Delete Post</a>
 
 </div>
+
+{% endblock content %}
