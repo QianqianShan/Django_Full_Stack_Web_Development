@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 # import Post
 from .models import Post
 # Create your views here.
@@ -16,10 +18,13 @@ class HelloDjango(TemplateView):
     template_name = 'home.html'
 
 # master interface
-class PostView(ListView):
+# add LoginRequiredMixin to make sure one needs to login before seeing contents
+class PostView(LoginRequiredMixin, ListView):
     # model is Post in models.py
     model = Post
     template_name = 'posts.html'
+    # login_url is an attribute, no need to use reverse() here
+    login_url = 'login'
 
 # Detail interface
 class PostDetailView(DetailView):
@@ -51,7 +56,7 @@ class PostDeleteView(DeleteView):
 # signup view
 class SignupView(CreateView):
     # can have prevknown fields
-    # predefined form class 
+    # predefined form class
     form_class = UserCreationForm
     template_name = 'signup.html'
     success_url = reverse_lazy('login')
