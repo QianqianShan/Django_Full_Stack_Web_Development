@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.forms import UserCreationForm
 # import Post
 from .models import Post
 # Create your views here.
@@ -46,3 +47,11 @@ class PostDeleteView(DeleteView):
     template_name = 'delete_post.html'
     # redirect to success_url when delete operation is done
     success_url = reverse_lazy('home')
+
+# signup view
+class SignupView(CreateView):
+    # can have prevknown fields
+    # predefined form class 
+    form_class = UserCreationForm
+    template_name = 'signup.html'
+    success_url = reverse_lazy('login')

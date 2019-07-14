@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from FunApp.views import SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('', include('FunApp.urls')),
     # if .../auth/, use auth app urls login.html in templates/registration
     path('auth/', include('django.contrib.auth.urls')),
+    path('auth/signup/', SignupView.as_view(), name = 'signup')
 ]

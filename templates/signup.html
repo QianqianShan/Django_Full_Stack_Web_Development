@@ -1,0 +1,11 @@
+<h1>Sign up</h1>
+<!-- method can be post / get /put ... -->
+<form class="" action="" method="post">
+  <!-- security check with Django -->
+  {% csrf_token %}
+  <!-- as_paragraph, form is an attribute from CreateView  -->
+  {{ form.as_p }}
+  <!-- add a button  -->
+  <button type="submit" name="signup">Sign up</button>
+
+</form>
