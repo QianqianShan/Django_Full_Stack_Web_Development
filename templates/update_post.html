@@ -1,0 +1,11 @@
+<h1>Update Post</h1>
+<!-- no need to define enctype if only update words -->
+<form class="" action="" method="post" enctype="">
+  <!-- security check with Django -->
+  {% csrf_token %}
+  <!-- as_paragraph, form is an attribute from CreateView  -->
+  {{ form.as_p }}
+  <!-- add a button  -->
+  <button type="submit" name="Submit">Update</button>
+
+</form>

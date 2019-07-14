@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 # from . import views
 
-from FunApp.views import PostView, PostDetailView, PostCreateView
-
+from FunApp.views import PostView, PostDetailView, PostCreateView, PostUpdateView
+from FunApp.views import PostDeleteView
 urlpatterns = [
     # path('', views.HelloDjango.as_view()),
     path('', PostView.as_view(), name = 'home'),
@@ -26,4 +26,6 @@ urlpatterns = [
     # set name as 'post_detail'
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post_detail'),
     path('add_post/', PostCreateView.as_view(), name = 'make_post'),
+    path('update_post/<int:pk>/', PostUpdateView.as_view(), name = 'update_post'),
+    path('delete_post/<int:pk>/', PostDeleteView.as_view(), name = 'delete_post')
 ]

@@ -1,3 +1,13 @@
 <p>{{ object.title }}</p>
 <!-- direct to the correct image path -->
 <img src="http://{{ request.META.HTTP_HOST }}/{{post.image.url}}" alt="">
+
+<div>
+  <!-- add a hyperlink to redirect to make_post url
+       primary key can be passed by object.id, object.pk,
+       post.id, post.pk (post is the lower case model name)
+       update_post needs primary key argument  -->
+  <a href="{% url 'update_post' object.id %}">Update Post Title</a>
+  <a href="{% url 'delete_post' object.id %}">Delete Post</a>
+
+</div>
