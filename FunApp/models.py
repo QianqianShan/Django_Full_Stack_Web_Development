@@ -15,7 +15,37 @@ class FunAppUser(AbstractUser):
                 blank = True,
                 null = True,
                 )
+    def get_followings(self):
+        # obtain all connections, and keep only those has creators of self
+        connections = UserConnection.objects.filter(creator == self)
 
+    def get_followers(self):
+        # obtain all connections, and keep only those follow self
+        connections = UserConnection.objects.filter(following == self)
+    # tell if self is followed by user
+    def is_followed_by(self, user):
+        followers = UserConnection.objects.filter(following == self)
+        return followers.filter(creator == user).exists()
+    def __str__(self):
+        return self.username
+
+
+
+class UserConnection(models.Model):
+    creator = models.ForeignKey(
+    FunAppUser,
+    on_delete = models.CASCADE,
+    related_name = 'creators'
+    )
+
+    following = models.ForeignKey(
+    FunAppUser,
+    on_delete = models.CASCADE,
+    related_name = 'followings'
+    )
+
+    def __str__(self):
+        return self.creator.username + 'Follows' + self.following.username
 # create a post class inherited from models.Model
 # Post includes two fields: title and image
 class Post(models.Model):
