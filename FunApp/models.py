@@ -49,9 +49,11 @@ class UserConnection(models.Model):
 # create a post class inherited from models.Model
 # Post includes two fields: title and image
 class Post(models.Model):
+    # post author
     author = models.ForeignKey(
              FunAppUser,
              on_delete = models.CASCADE,
+             # find all posts of author
              related_name = 'posts',
              blank = True,
              null = True,)
@@ -86,24 +88,26 @@ class Post(models.Model):
 class Comment(models.Model):
     # foreignkey of database linked to Post
     # related_name = 'comments' so that post.comments
-     # can show all comments of current Post
+    # can show all comments of current Post
     post = models.ForeignKey(to = Post,
            on_delete = models.CASCADE,
            related_name = 'comments')
     # who wrote the comments
+    # model is FunAppUser
     user = models.ForeignKey(
            FunAppUser,
            on_delete = models.CASCADE,
            related_name = 'comments'
     )
-
+    # maxlength of each comment if 140
     comment = models.CharField(max_length = 140)
+    # auto add datetime when there is a post
     posted_on = models.DateTimeField(
                 auto_now_add = True,
                 editable = False)
-
     def __str__(self):
         return self.comment
+
 
 class Like(models.Model):
     post = models.ForeignKey(Post,
@@ -116,4 +120,5 @@ class Like(models.Model):
     #     unique_together = ("post", "user")
 
     def __str__(self):
+        # who likes what post
         return 'Like: ' + self.user.username + ' ' + self.post.title

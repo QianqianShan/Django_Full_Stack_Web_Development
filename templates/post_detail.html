@@ -1,20 +1,24 @@
 {% extends "base.html" %}
-
+{% load custom_tags %}
 {% block content %}
 
 <div class="row single-post">
     <div class="single-post-card view-update {{ object.pk }}">
         <div class="header">
+          <!-- click profile pic/username to redirect to profile url -->
             <a href="{% url 'home' %}">
+              <!-- if there is a profile picture of user, show it together with uesrname -->
                 {% if object.author.profile_pic %}
                     <img class="picture-circle--medium" src="http://{{ request.META.HTTP_HOST }}/{{object.author.profile_pic.url}}">
                 {% endif %}
                 {{ object.author.username }}
             </a>
         </div>
+        <!-- show the image 1000px * 1000px -->
         <div class="image__wrapper">
             <img class="card__main-image" src="http://{{ request.META.HTTP_HOST }}/{{object.image.url}}" width='1000', height='1000'>
         </div>
+        <!-- comments and like -->
         <div class="comments-portion">
             <div class="likes-timestamp-row">
                 <div class="likes">
