@@ -68,6 +68,7 @@ class SignupView(CreateView):
 class UserDetail(DetailView):
     model = FunAppUser
     template_name = 'user_profile.html'
+    login_url = reverse_lazy('login')
 
 class EditProfile(UpdateView):
     model = FunAppUser

@@ -24,7 +24,5 @@ urlpatterns = [
     # if .../auth/, use auth app urls login.html in templates/registration
     path('auth/', include('django.contrib.auth.urls')),
     path('auth/signup/', SignupView.as_view(), name = 'signup'),
-    path('user/<int:pk>/', UserDetail.as_view(), name = 'user_profile'),
-    path('edit_profile/<int:pk>/', EditProfile.as_view(), name = 'edit_profile'),
-    path('like', addLike, name = 'like')
+
 ]
