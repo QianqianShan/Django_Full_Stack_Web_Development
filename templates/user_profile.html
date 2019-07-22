@@ -15,11 +15,13 @@
             <div class="col-xs-8 right">
                 <div class="name-buttons">
                     <h1 class="username">{{ object.username }}</h1>
+                    <!-- if the current user is self, show edit profile -->
                     {% if user == object %}
                         <a class="edit-desktop" href="{% url 'edit_profile' object.id %}">
                             <button class="edit-profile">Edit Profile</button>
                         </a>
                     {% else %}
+                        <!-- if the user is not self, see  -->
                         {% comment %} {% is_following user object as following %} {% endcomment %}
                         <div class="follow-toggle__container">
                             {% comment %} <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}" id="{{ object.pk }}">
@@ -35,7 +37,7 @@
                         </div>
                     {% endif %}
                 </div>
-
+                <!-- number of posts/followers/following -->
                 <div>
                     <ul class="stats">
                         <div class="col-xs-4"><li class="stats__count"><span>{{ object.posts.count }}</span><br> posts</li></div>
@@ -46,6 +48,8 @@
             </div>
         </div>
     </div>
+
+    <!-- show the posted pictures -->
 
     <div class="profile__body">
         <div class="row">

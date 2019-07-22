@@ -18,14 +18,17 @@ class FunAppUser(AbstractUser):
     def get_followings(self):
         # obtain all connections, and keep only those has creators of self
         connections = UserConnection.objects.filter(creator = self)
+        return connections
 
     def get_followers(self):
         # obtain all connections, and keep only those follow self
         connections = UserConnection.objects.filter(following = self)
+        return connections
     # tell if self is followed by user
     def is_followed_by(self, user):
         followers = UserConnection.objects.filter(following = self)
         return followers.filter(creator = user).exists()
+        
     def get_absolute_url(self):
         reverse('user_profile', args=[str(self.id)])
 
