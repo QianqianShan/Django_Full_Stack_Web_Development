@@ -28,9 +28,10 @@ class FunAppUser(AbstractUser):
     def is_followed_by(self, user):
         followers = UserConnection.objects.filter(following = self)
         return followers.filter(creator = user).exists()
-        
+    # redirect to user profile page when finished the profile udpate 
     def get_absolute_url(self):
-        reverse('user_profile', args=[str(self.id)])
+        return reverse('user_profile', args=[str(self.id)])
+        # reverse('home')
 
     def __str__(self):
         return self.username

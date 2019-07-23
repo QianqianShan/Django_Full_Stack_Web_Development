@@ -22,18 +22,18 @@
                         </a>
                     {% else %}
                         <!-- if the user is not self, see  -->
-                        {% comment %} {% is_following user object as following %} {% endcomment %}
+                        {% is_following user object as following %}
                         <div class="follow-toggle__container">
-                            {% comment %} <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}" id="{{ object.pk }}">
+                        <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}" id="{{ object.pk }}">
                                 {% if following %}
                                     Unfollow
                                 {% else %}
                                     Follow
                                 {% endif %}
-                            </button> {% endcomment %}
-                            <button class="btn btn-primary">
-                                Follow
                             </button>
+                            <!-- <button class="btn btn-primary">
+                                Follow
+                            </button> -->
                         </div>
                     {% endif %}
                 </div>

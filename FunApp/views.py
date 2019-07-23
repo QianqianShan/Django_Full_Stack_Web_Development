@@ -73,8 +73,9 @@ class UserDetail(DetailView):
 class EditProfile(UpdateView):
     model = FunAppUser
     template_name = 'edit_profile.html'
+    # users can update profile picture and username
     fields = ['profile_pic', 'username']
-    login_url = 'login'
+    login_url = reverse_lazy('login')
 
 
 # function views
