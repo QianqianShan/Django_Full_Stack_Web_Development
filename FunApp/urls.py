@@ -18,7 +18,8 @@ from django.urls import path, include
 # from . import views
 
 from FunApp.views import PostView, PostDetailView, PostCreateView, PostUpdateView
-from FunApp.views import PostDeleteView, UserDetail, EditProfile, addLike
+from FunApp.views import PostDeleteView, UserDetail, EditProfile, addLike, toggleFollow
+from FunApp.views import addComment
 urlpatterns = [
     # path('', views.HelloDjango.as_view()),
     path('', PostView.as_view(), name = 'home'),
@@ -31,5 +32,7 @@ urlpatterns = [
     path('user_profile/<int:pk>/', UserDetail.as_view(), name = 'user_profile'),
     path('edit_profile/<int:pk>/', EditProfile.as_view(), name = 'edit_profile'),
     path('like', addLike, name = 'like'),
+    path('togglefollow', toggleFollow, name = 'togglefollow'),
+    path('comment', addComment, name = 'add_comment'),
 
 ]

@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # import Post
-from .models import Post, FunAppUser, Like
+from .models import Post, FunAppUser, Like, Comment
 # Create your views here.
 # http://ccbv.co.uk/projects/Django/2.2/django.views.generic.base/TemplateView/
 
@@ -81,9 +81,9 @@ class EditProfile(UpdateView):
 # function views
 @ajax_request
 def toggleFollow(request):
-    current_user = InstaUser.objects.get(pk=request.user.pk)
+    current_user = FunAppUser.objects.get(pk=request.user.pk)
     follow_user_pk = request.POST.get('follow_user_pk')
-    follow_user = InstaUser.objects.get(pk=follow_user_pk)
+    follow_user = FunAppUser.objects.get(pk=follow_user_pk)
 
     try:
         if current_user != follow_user:

@@ -28,7 +28,7 @@ class FunAppUser(AbstractUser):
     def is_followed_by(self, user):
         followers = UserConnection.objects.filter(following = self)
         return followers.filter(creator = user).exists()
-    # redirect to user profile page when finished the profile udpate 
+    # redirect to user profile page when finished the profile udpate
     def get_absolute_url(self):
         return reverse('user_profile', args=[str(self.id)])
         # reverse('home')
@@ -125,9 +125,9 @@ class Like(models.Model):
            related_name = 'likes',)
     user = models.ForeignKey(FunAppUser,
            on_delete = models.CASCADE)
-
-    # class Meta:
-    #     unique_together = ("post", "user")
+    # unique like
+    class Meta:
+        unique_together = ("post", "user")
 
     def __str__(self):
         # who likes what post

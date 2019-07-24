@@ -11,6 +11,7 @@ function error_cb(error) {
 
 // success (like)/ error callback
 function create_like(success_cb, error_cb) {
+    // find the post primary key, see posts.html for .hidden-data class
     var post_pk = $(this).siblings('.hidden-data').find('.post-pk').text();
     console.log(post_pk);
 
@@ -66,7 +67,7 @@ $('.submit-like').on('click', function() {
 
 /*
 *
-*    Comments
+*    Add Comments
 *
 */
 
