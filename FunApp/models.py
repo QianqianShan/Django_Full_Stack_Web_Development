@@ -39,7 +39,7 @@ class FunAppUser(AbstractUser):
 
 
 class UserConnection(models.Model):
-    created = models.DateTimeField(auto_now_add = True, editable = False)
+    # created = models.DateTimeField(auto_now_add = True, editable = False)
     creator = models.ForeignKey(
     FunAppUser,
     on_delete = models.CASCADE,

@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # import Post
-from .models import Post, FunAppUser, Like, Comment
+from .models import Post, FunAppUser, Like, Comment, UserConnection
 # Create your views here.
 # http://ccbv.co.uk/projects/Django/2.2/django.views.generic.base/TemplateView/
 
