@@ -37,9 +37,13 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
     model = Post
     template_name = 'add_post.html'
-    # required form infor, selected from Post class attributes
-    fields = '__all__'
+    # required form info, selected from Post class attributes
+    # fields = '__all__'
+    fields = ['title', 'image']
     # fields = 'title'
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 # UpdateView
 class PostUpdateView(UpdateView):
@@ -47,6 +51,11 @@ class PostUpdateView(UpdateView):
     template_name = 'update_post.html'
     # only update title
     fields = ('title',)
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 
 # DeleteView
 class PostDeleteView(DeleteView):

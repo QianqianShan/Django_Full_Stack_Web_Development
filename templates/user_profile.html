@@ -20,6 +20,7 @@
                         <a class="edit-desktop" href="{% url 'edit_profile' object.id %}">
                             <button class="edit-profile">Edit Profile</button>
                         </a>
+
                     {% else %}
                         <!-- if the user is not self, see  -->
                         {% is_following user object as following %}

@@ -18,6 +18,17 @@
         <div class="image__wrapper">
             <img class="card__main-image" src="http://{{ request.META.HTTP_HOST }}/{{object.image.url}}" width='1000', height='1000'>
         </div>
+        <!-- update post title / delete post -->
+        <div class="container">
+          <!-- add a hyperlink to redirect to make_post url
+      primary key can be passed by object.id, object.pk,
+      post.id, post.pk (post is the lower case model name)
+      update_post needs primary key argument  -->
+          {% if request.user.username == object.author.username %}
+          <a href="{% url 'update_post' object.id %}" class="btn btn-info" role="button">Update Post Title</a>
+          <a href="{% url 'delete_post' object.id %}" class="btn btn-info" role="button">Delete Post</a>
+          {% endif %}
+        </div>
         <!-- comments and like -->
         <div class="comments-portion">
             <div class="likes-timestamp-row">
