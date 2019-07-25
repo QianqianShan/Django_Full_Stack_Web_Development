@@ -1,9 +1,57 @@
+
 {% extends 'base.html' %}
+
+{% load static %}
 {% block content %}
-<h1>Login</h1>
-<form class="" action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" name="login">Login</button>
-</form>
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allura|Bad+Script|Parisienne&display=swap" rel="stylesheet">
+
+<div class="row">
+  <div class="col-xs-4">
+    <p style="font-family:Parisienne, cursive;font-size:50px;padding:30px">
+      Welcome!
+    </p>
+  </div>
+  <div class="col-xs-4">
+    <h1>Login</h1>
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+        <button style = "background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 8px;
+      margin:0px 120px auto;
+      text-align:center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;" type="submit" name="login">Login</button>
+
+    </form>
+
+    </div>
+    <div class="col-xs-4">
+      <p style="font-family:Bad Script, cursive;font-size:20px;padding:30px">
+        Feel free to signup for my website or log in with:<br>
+        user: Pikachu <br>
+        pw: travelalot
+      </p>
+    </div>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <img sytle="width:90%;"
+          src="http://{{ request.META.HTTP_HOST }}/static/images/bamboo.jpeg"
+          alt="bird">
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
 {% endblock content %}
