@@ -9,8 +9,9 @@ verify_ssl = true
 django = "*"
 django-imagekit = "*"
 pillow = "*"
-annoying = "*"
 django-annoying = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.6"
