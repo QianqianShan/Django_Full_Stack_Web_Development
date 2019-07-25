@@ -1,2 +1,2 @@
-web: gunicorn InstaDemo.wsgi --log-file -
+web: gunicorn Demo.wsgi --log-file -
 
